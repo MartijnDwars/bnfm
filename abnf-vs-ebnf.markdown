@@ -29,6 +29,7 @@ Forward-slash / solidus: `rule1 / rule2`
 > Note: ABNF provides facility for "incremental alternative" ie:
 > `ruleset = alt1 / alt2`
 > `ruleset =/ alt3`
+
 ### EBNF
 Pipe: `rule1 | rule2`
 
