@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.6.10)  7 AUG 2014 16:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.6.10)  7 AUG 2014 20:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -23,8 +23,7 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-No file DocBNF.aux.
+) (./DocBNF.aux)
 \openout1 = `DocBNF.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -46,7 +45,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 11.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 27.
+(Font)              <10.95> on input line 26.
 
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
@@ -101,12 +100,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--80
 
 [2] (./DocBNF.aux) ) 
 Here is how much of TeX's memory you used:
- 242 strings out of 494757
- 2596 string characters out of 6175176
+ 245 strings out of 494757
+ 2636 string characters out of 6175176
  51483 words of memory out of 5000000
- 3660 multiletter control sequences out of 15000+600000
+ 3661 multiletter control sequences out of 15000+600000
  9370 words of font info for 33 fonts, out of 8000000 for 9000
  80 hyphenation exceptions out of 8191
  21i,9n,19p,375b,185s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on DocBNF.dvi (2 pages, 3344 bytes).
+Output written on DocBNF.dvi (2 pages, 3432 bytes).

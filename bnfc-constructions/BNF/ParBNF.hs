@@ -16,10 +16,10 @@ type HappyAny = Happy_GHC_Exts.Any
 #else
 type HappyAny = forall a . a
 #endif
-happyIn8 :: (String) -> (HappyAbsSyn )
+happyIn8 :: (Ident) -> (HappyAbsSyn )
 happyIn8 x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyIn8 #-}
-happyOut8 :: (HappyAbsSyn ) -> (String)
+happyOut8 :: (HappyAbsSyn ) -> (Ident)
 happyOut8 x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyOut8 #-}
 happyIn9 :: (Syntax) -> (HappyAbsSyn )
@@ -93,9 +93,9 @@ happy_n_nonterms = 6 :: Int
 
 happyReduce_5 = happySpecReduce_1  0# happyReduction_5
 happyReduction_5 happy_x_1
-	 =  case happyOutTok happy_x_1 of { (PT _ (TL happy_var_1)) -> 
+	 =  case happyOutTok happy_x_1 of { (PT _ (TV happy_var_1)) -> 
 	happyIn8
-		 (happy_var_1
+		 (Ident happy_var_1
 	)}
 
 happyReduce_6 = happySpecReduce_0  1# happyReduction_6
@@ -162,7 +162,7 @@ happyReduce_13 = happySpecReduce_1  5# happyReduction_13
 happyReduction_13 happy_x_1
 	 =  case happyOut8 happy_x_1 of { happy_var_1 -> 
 	happyIn13
-		 (TermLit happy_var_1
+		 (Literal happy_var_1
 	)}
 
 happyReduce_14 = happySpecReduce_3  5# happyReduction_14
@@ -171,7 +171,7 @@ happyReduction_14 happy_x_3
 	happy_x_1
 	 =  case happyOut8 happy_x_2 of { happy_var_2 -> 
 	happyIn13
-		 (TermRule happy_var_2
+		 (NonTerm happy_var_2
 	)}
 
 happyNewToken action sts stk [] =
@@ -184,7 +184,7 @@ happyNewToken action sts stk (tk:tks) =
 	PT _ (TS _ 2) -> cont 2#;
 	PT _ (TS _ 3) -> cont 3#;
 	PT _ (TS _ 4) -> cont 4#;
-	PT _ (TL happy_dollar_dollar) -> cont 5#;
+	PT _ (TV happy_dollar_dollar) -> cont 5#;
 	_ -> cont 6#;
 	_ -> happyError' (tk:tks)
 	}
