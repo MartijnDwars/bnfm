@@ -1,0 +1,17 @@
+--old-school BNF in BNFC
+
+SyntaxNil . Syntax ::= ;
+SyntaxCons . Syntax ::= Rule Syntax ;
+
+Rule . Rule ::= "<" String ">" "::=" Expression ;
+
+--Expression captures optionality
+ExpressionList . Expression ::= List ;
+ExpressionOpt . Expression ::= List "|" Expression ;
+
+--Lists have implicit concatenation with spaces
+ListOne . List ::= Term ;
+ListCons . List ::= Term List ;
+
+TermLit . Term ::= String ;
+TermRule . Term ::= "<" String ">" ;
