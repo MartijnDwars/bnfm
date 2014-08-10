@@ -9,9 +9,9 @@ type Result = Err String
 failure :: Show a => a -> Result
 failure x = Bad $ "Undefined case: " ++ show x
 
-transIdent :: Ident -> Result
-transIdent x = case x of
-  Ident str  -> failure x
+transNonTerminal :: NonTerminal -> Result
+transNonTerminal x = case x of
+  NonTerminal str  -> failure x
 
 
 transSyntax :: Syntax -> Result
@@ -22,7 +22,7 @@ transSyntax x = case x of
 
 transRule :: Rule -> Result
 transRule x = case x of
-  Rule id expression  -> failure x
+  Rule nonterminal expression  -> failure x
 
 
 transExpression :: Expression -> Result
@@ -39,8 +39,8 @@ transList x = case x of
 
 transTerm :: Term -> Result
 transTerm x = case x of
-  Literal id  -> failure x
-  NonTerm id  -> failure x
+  Literal str  -> failure x
+  NonTerm nonterminal  -> failure x
 
 
 

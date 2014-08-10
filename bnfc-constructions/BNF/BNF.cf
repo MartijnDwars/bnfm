@@ -1,17 +1,24 @@
---old-school BNF in BNFC
+--| I kinda made lists explicit, here: I was able to implement
+--| Kleene plusses and stars with the inductive lists. I haven't
+--| found much material on properly making list productions in
+--| BNFC (*prays to shrine for more material*), but would gladly
+--| take in suggestions!
+
+
+token NonTerminal ('<' (letter | digit | '_' | '-')* '>') ;
 
 SyntaxNil . Syntax ::= ;
 SyntaxCons . Syntax ::= Rule Syntax ;
 
-Rule . Rule ::= "<" Ident ">" "::=" Expression ;
+Rule . Rule ::= NonTerminal "::=" Expression ;
 
 --Expression captures optionality
 ExpressionList . Expression ::= List ;
 ExpressionOpt . Expression ::= List "|" Expression ;
 
---Lists have implicit concatenation with spaces
+--Kleene Plus lists are concatenation
 ListOne . List ::= Term ;
 ListCons . List ::= Term List ;
 
-Literal . Term ::= Ident ;
-NonTerm . Term ::= "<" Ident ">" ;
+Literal . Term ::= String ;
+NonTerm . Term ::= NonTerminal ;

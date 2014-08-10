@@ -20,17 +20,17 @@ import ErrM
 
 %token 
  '::=' { PT _ (TS _ 1) }
- '<' { PT _ (TS _ 2) }
- '>' { PT _ (TS _ 3) }
- '|' { PT _ (TS _ 4) }
+ '|' { PT _ (TS _ 2) }
 
-L_ident  { PT _ (TV $$) }
+L_quoted { PT _ (TL $$) }
+L_NonTerminal { PT _ (T_NonTerminal $$) }
 L_err    { _ }
 
 
 %%
 
-Ident   :: { Ident }   : L_ident  { Ident $1 }
+String  :: { String }  : L_quoted {  $1 }
+NonTerminal    :: { NonTerminal} : L_NonTerminal { NonTerminal ($1)}
 
 Syntax :: { Syntax }
 Syntax : {- empty -} { SyntaxNil } 
@@ -38,7 +38,7 @@ Syntax : {- empty -} { SyntaxNil }
 
 
 Rule :: { Rule }
-Rule : '<' Ident '>' '::=' Expression { Rule $2 $5 } 
+Rule : NonTerminal '::=' Expression { Rule $1 $3 } 
 
 
 Expression :: { Expression }
@@ -52,8 +52,8 @@ List : Term { ListOne $1 }
 
 
 Term :: { Term }
-Term : Ident { Literal $1 } 
-  | '<' Ident '>' { NonTerm $2 }
+Term : String { Literal $1 } 
+  | NonTerminal { NonTerm $1 }
 
 
 

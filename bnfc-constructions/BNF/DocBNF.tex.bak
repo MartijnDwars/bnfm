@@ -31,6 +31,10 @@ except \terminal{"}\ unless preceded by \verb6\6.
 
 
 
+NonTerminal literals are recognized by the regular expression
+\(\mbox{`{$<$}'} ({\nonterminal{letter}} \mid {\nonterminal{digit}} \mid \mbox{`\_'} \mid \mbox{`{$-$}'})* \mbox{`{$>$}'}\)
+
+
 \subsection*{Reserved words and symbols}
 The set of reserved words is the set of terminals appearing in the grammar. Those reserved words that consist of non-letter characters are called symbols, and they are treated in a different way from those that are similar to identifiers. The lexer follows rules familiar from languages like Haskell, C, and Java, including longest match and spacing conventions.
 
@@ -41,8 +45,8 @@ There are no reserved words in BNF.\\
 The symbols used in BNF are the following: \\
 
 \begin{tabular}{lll}
-{\symb{{$<$}}} &{\symb{{$>$}}} &{\symb{::{$=$}}} \\
-{\symb{{$|$}}} & & \\
+{\symb{::{$=$}}} &{\symb{
+}} &{\symb{{$|$}}} \\
 \end{tabular}\\
 
 \subsection*{Comments}
@@ -60,7 +64,8 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{Rule}} & {\arrow}  &{\terminal{{$<$}}} {\nonterminal{String}} {\terminal{{$>$}}} {\terminal{::{$=$}}} {\nonterminal{Expression}}  \\
+{\nonterminal{Rule}} & {\arrow}  &{\nonterminal{NonTerminal}} {\terminal{::{$=$}}} {\nonterminal{Expression}} {\terminal{
+}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -75,7 +80,7 @@ All other symbols are terminals.\\
 
 \begin{tabular}{lll}
 {\nonterminal{Term}} & {\arrow}  &{\nonterminal{String}}  \\
- & {\delimit}  &{\terminal{{$<$}}} {\nonterminal{String}} {\terminal{{$>$}}}  \\
+ & {\delimit}  &{\nonterminal{NonTerminal}}  \\
 \end{tabular}\\
 
 

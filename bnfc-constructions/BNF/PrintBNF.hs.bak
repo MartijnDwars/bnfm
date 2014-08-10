@@ -79,6 +79,10 @@ instance Print Double where
 
 
 
+instance Print NonTerminal where
+  prt _ (NonTerminal i) = doc (showString ( i))
+
+
 
 instance Print Syntax where
   prt i e = case e of
@@ -88,7 +92,7 @@ instance Print Syntax where
 
 instance Print Rule where
   prt i e = case e of
-   Rule str expression -> prPrec i 0 (concatD [doc (showString "<") , prt 0 str , doc (showString ">") , doc (showString "::=") , prt 0 expression])
+   Rule nonterminal expression -> prPrec i 0 (concatD [prt 0 nonterminal , doc (showString "::=") , prt 0 expression , doc (showString "\n")])
 
 
 instance Print Expression where
@@ -105,8 +109,8 @@ instance Print List where
 
 instance Print Term where
   prt i e = case e of
-   TermLit str -> prPrec i 0 (concatD [prt 0 str])
-   TermRule str -> prPrec i 0 (concatD [doc (showString "<") , prt 0 str , doc (showString ">")])
+   Literal str -> prPrec i 0 (concatD [prt 0 str])
+   NonTerm nonterminal -> prPrec i 0 (concatD [prt 0 nonterminal])
 
 
 
